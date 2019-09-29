@@ -1,0 +1,14 @@
+#{extends 'main.html' /}
+#{set title:'Cadastro de Jogadores' /}
+
+<h1>Listar Jogadores</h1>
+
+<ul>
+	#{list items:jogadores, as:'jogador'}
+		<li>${jogador.nome} |  ${jogador.nickname} <a href="@{Jogadores.editar(jogador.id)}">Editar</a></li>
+	#{/list}	
+</ul>
+
+<a href="@{Application.index}">Página Inicial</a>
+
+

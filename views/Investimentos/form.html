@@ -1,0 +1,26 @@
+#{extends 'main.html' /}
+#{set title:'Cadastro de Usuarios' /}
+
+<h1>Cadastro de Usuarios</h1>
+
+<form action="@{Usuarios.salvar}" method="post">
+
+	<input type="hidden" name="usuario.id" value="=${usuario?.id}"
+
+	<input type="hidden" name="usuario.id" value="${usuario?.id}">
+	Nome: <input type="text" name="jog.nome" value="${usuario?.nome}"><br>
+	Nick: <input type="text" name="jog.nickname" value="${usuario?.nickname}"><br>	
+	Equipe: 
+	<select name="jog.equipe.id"">
+		<option></option>
+		#{list items:equipes, as: 'equipe'}
+			<option value="${equipe.id}" #{if jogador?.equipe?.id == equipe.id} selected #{/if} >${equipe.nome}</option>
+		#{/list}
+	</select><br>
+	
+	<input type="submit" value="Enviar">	
+</form>
+
+<a href="@{Application.index}">Página Inicial</a>
+
+

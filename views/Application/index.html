@@ -1,0 +1,126 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/*<--
+<ul>
+	<li><a href="@{Investimentos.form}">Cadastro de Jogador</a></li>
+</ul>*/
+--!>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #cc0000;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelarbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+#{if session.get("usuarioID")}
+<li><a href="">${session.get("nomeUsuario")}</a></li>
+</br>
+</br>
+<li><a href="@{Application.optfut()}">Opcao 1: Prever resultados de investimentos futuros</a></li>
+<li><a href="@{Application.optprev()}">Opcao 2: Calcular resultados de investimentos previos</a></li>
+
+
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<li><a href="@{Login.logout()}">Logout</a></li>
+#{/if}
+#{else}
+
+
+<h2>investcalc login</h2>
+
+<form action="@{Login.autenticar()}" method="post">
+  <div class="imgr">
+    <img src="" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    
+    <label for="uname"><b>nome</b></label>
+    <input type="text" placeholder="insira seu nome" name="nome" required>
+    <label for="psw"><b>senha</b></label>
+    <input type="password" placeholder="insira sua senha" name="senha" required>
+    <button type="submit">Login</button>
+    
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> lembre de mim</input>
+    
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancelar</button>
+    <span class="psw">esqueceu <a href="#">sua senha?</a></span>
+  </div>
+</form>
+#{/else}
+</body>
+</html>
