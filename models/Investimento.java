@@ -23,8 +23,15 @@ public class Investimento extends Model {
 	float resultado;
 	String descricao = "teste de descricao";
 	String observacoes = "teste de observações";
+	String calcafzr;
 	
 	
+	public String getCalcafzr() {
+		return calcafzr;
+	}
+	public void setCalcafzr(String calcafzr) {
+		this.calcafzr = calcafzr;
+	}
 	public String getDescricao() {return descricao;}
 	public String getObservacoes() {return observacoes;}	
 	public void setDescricao(String descricao) {this.descricao = descricao;}
@@ -85,6 +92,7 @@ public class Investimento extends Model {
 	//CALCULAR RESULTADOS DE INVESTIMENTOS PRÉVIOS
 	public void CalculoGeralBruto(float ValorInicial, float RendPorcent){
 		this.setRend_bruto(ValorInicial + ValorInicial*RendPorcent);
+		this.setRend_porcent(RendPorcent);
 		this.setResultado(this.getRend_bruto());
 	}
 	public void CalculoGeralPorcent(float ValorInicial, float RendBruto){

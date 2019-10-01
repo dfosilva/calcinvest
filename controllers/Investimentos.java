@@ -8,6 +8,9 @@ public class Investimentos extends Controller {
 		List<Carteira> carteiras= Carteira.findAll();
 		render(carteiras);
 	}*/
+	float vf1;
+	float vf2;
+	float vf3;
 	public static void form() {
 		List<Investimento> investimentos = Investimento.findAll();
 		render(investimentos);
@@ -26,17 +29,37 @@ public class Investimentos extends Controller {
 		List<Investimento> investimentos = Investimento.findAll();
 		render(investimentos);
 	}
+	public void converter2valores(String vs1, String vs2, Investimento investimento) {
+		try{
+			vf1 = Float.parseFloat(vs1);
+			vf2 = Float.parseFloat(vs2);
+		}catch(Exception e) {
+			render("Application/erroentrada.html");
+		}
+	}
+	/*public float converter3(float valor1, float valor2, float valor3) {	
+	}*/
 
-	
-
-	public void CalculoGeralBruto(float ValorInicial, float RendPorcent){
-		/*this.setRend_bruto(ValorInicial + ValorInicial*RendPorcent);
-		this.setResultado(this.getRend_bruto());*/
-		//float result = ValorInicial + ValorInicial*RendPorcent;
+	public void preCalcBruto(String ValorInicial, String RendPorcent){
 		Investimento investimento = new Investimento();
+		investimento.setCalcafzr("preCalcBruto");
+		converter2valores(ValorInicial, RendPorcent, investimento);
+		investimento.CalculoGeralBruto(vf1, vf2);
+		render("Application/calculadora.html", investimento);
+	}
+	public void preCalcCent(float ValorInicial, float RendPorcent){
+		Investimento investimento = new Investimento();
+		investimento.setCalcafzr("");
+		
+		
+		
 		investimento.CalculoGeralBruto(ValorInicial, RendPorcent);
 		render("Application/calculadora.html", investimento);
 	}
+	
+	
+	
+	
 	public void CalculoGeralPorcent(float ValorInicial, float RendBruto) {
 		Investimento investimento = new Investimento();
 		investimento.CalculoGeralPorcent(ValorInicial, RendBruto);

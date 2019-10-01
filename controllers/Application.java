@@ -14,6 +14,7 @@ public class Application extends Controller {
     public static void futValBruto() {render();}
     public static void preValBruto() {render();}
     public static void preValPercent() {render();}
+    public static void erroentrada() {render();}
     
     // Redirecionadores de formularios de calculo
     public static void poupBruto() {render("Calculadora/poupBruto.html");}
@@ -24,4 +25,6 @@ public class Application extends Controller {
     public static void selicPerCent() {render("Calculadora/selicPerCent.html");}
     public static void preCalcBruto() {render("Calculadora/preCalcBruto.html");}
     public static void preCalcCent() {render("Calculadora/preCalcCent.html");}
+    
+    //public static void getback() {render("Calculadora" + )}
 }
